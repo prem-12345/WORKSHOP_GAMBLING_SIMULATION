@@ -10,6 +10,7 @@ public class GamblingSimulation {
 
     public static final int STAKE = 100;
     public static final int BET = 1;
+    public static int winningAmount, looseAmount, stake;
 
     public static void winOrLoss() {
 
@@ -26,7 +27,35 @@ public class GamblingSimulation {
         }
     }
 
+    public static int stakeResign() {
+
+        //UC3 GAMBLER PLAYES FOR 50% IF WIN OR LOSS
+
+        float stake_value = 0.5f;
+        stake = STAKE;
+        winningAmount = (int) Math.round(STAKE + (STAKE * stake_value));
+        looseAmount = (int) Math.round(STAKE * stake_value);
+        boolean Flag = true;
+
+        while (Flag) {
+
+            winOrLoss();
+            if (stake == winningAmount) {
+                Flag = false;
+            }
+            if (stake == looseAmount) {
+                Flag = false;
+            }
+
+        }
+
+        return stake;
+
+
+    }
+
     public static void main(String[] args) {
-        GamblingSimulation.winOrLoss();
+        GamblingSimulation stakeresign = new GamblingSimulation();
+        System.out.println(GamblingSimulation.stakeResign());
     }
 }
